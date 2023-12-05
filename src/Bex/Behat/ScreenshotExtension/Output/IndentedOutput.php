@@ -52,7 +52,7 @@ class IndentedOutput implements OutputInterface
      * @param bool $newline Whether to add a newline
      * @param int $options A bitmask of options (one of the OUTPUT or VERBOSITY constants), 0 is considered the same as self::OUTPUT_NORMAL | self::VERBOSITY_NORMAL
      */
-    public function write($messages, $newline = false, $options = 0)
+    public function write(string|iterable $messages, bool $newline = false, int $options = 0)
     {
         $messages = $this->addIndentationToMessages($messages);
 
@@ -65,7 +65,7 @@ class IndentedOutput implements OutputInterface
      * @param string|array $messages The message as an array of lines of a single string
      * @param int $options A bitmask of options (one of the OUTPUT or VERBOSITY constants), 0 is considered the same as self::OUTPUT_NORMAL | self::VERBOSITY_NORMAL
      */
-    public function writeln($messages, $options = 0)
+    public function writeln(string|iterable $messages, int $options = 0)
     {
         $messages = $this->addIndentationToMessages($messages);
 
@@ -77,7 +77,7 @@ class IndentedOutput implements OutputInterface
      *
      * @param int $level The level of verbosity (one of the VERBOSITY constants)
      */
-    public function setVerbosity($level)
+    public function setVerbosity(int $level)
     {
         $this->decoratedOutput->setVerbosity($level);
     }
@@ -87,7 +87,7 @@ class IndentedOutput implements OutputInterface
      *
      * @return int The current level of verbosity (one of the VERBOSITY constants)
      */
-    public function getVerbosity()
+    public function getVerbosity(): int
     {
         return $this->decoratedOutput->getVerbosity();
     }
@@ -97,7 +97,7 @@ class IndentedOutput implements OutputInterface
      *
      * @return bool true if verbosity is set to VERBOSITY_QUIET, false otherwise
      */
-    public function isQuiet()
+    public function isQuiet(): bool
     {
         return $this->decoratedOutput->isQuiet();
     }
@@ -107,7 +107,7 @@ class IndentedOutput implements OutputInterface
      *
      * @return bool true if verbosity is set to VERBOSITY_VERBOSE, false otherwise
      */
-    public function isVerbose()
+    public function isVerbose(): bool
     {
         return $this->decoratedOutput->isVerbose();
     }
@@ -117,7 +117,7 @@ class IndentedOutput implements OutputInterface
      *
      * @return bool true if verbosity is set to VERBOSITY_VERY_VERBOSE, false otherwise
      */
-    public function isVeryVerbose()
+    public function isVeryVerbose(): bool
     {
         return $this->decoratedOutput->isVeryVerbose();
     }
@@ -127,7 +127,7 @@ class IndentedOutput implements OutputInterface
      *
      * @return bool true if verbosity is set to VERBOSITY_DEBUG, false otherwise
      */
-    public function isDebug()
+    public function isDebug(): bool
     {
         return $this->decoratedOutput->isDebug();
     }
@@ -137,7 +137,7 @@ class IndentedOutput implements OutputInterface
      *
      * @param bool $decorated Whether to decorate the messages
      */
-    public function setDecorated($decorated)
+    public function setDecorated(bool $decorated)
     {
         $this->decoratedOutput->setDecorated($decorated);
     }
@@ -147,7 +147,7 @@ class IndentedOutput implements OutputInterface
      *
      * @return bool true if the output will decorate messages, false otherwise
      */
-    public function isDecorated()
+    public function isDecorated(): bool
     {
         return $this->decoratedOutput->isDecorated();
     }
@@ -167,14 +167,14 @@ class IndentedOutput implements OutputInterface
      *
      * @return \Symfony\Component\Console\Formatter\OutputFormatterInterface
      */
-    public function getFormatter()
+    public function getFormatter(): \Symfony\Component\Console\Formatter\OutputFormatterInterface
     {
         return $this->decoratedOutput->getFormatter();
     }
 
     /**
      * Prepend message with padding
-     * 
+     *
      * @param $messages
      *
      * @return array|string
