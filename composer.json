@@ -1,6 +1,6 @@
 {
-    "name": "eiriksm/behat-screenshot",
-    "version": "2.1.0",
+    "name": "vortex41/behat-screenshot",
+    "version": "2.2.0",
     "type": "library",
     "description": "Extension for behat to help debug failing scenarios",
     "keywords": ["tdd","bdd","behat", "behat-screenshot"],
